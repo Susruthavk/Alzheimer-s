@@ -65,13 +65,19 @@ enrollment_curve <- function(tbls) {
   dates <- unique(c(dates, study$data_cutoff_date))
   scr <- sort(tbls$subjects$screening_date)
   rnd <- sort(tbls$subjects$randomization_date[!is.na(tbls$subjects$randomization_date)])
-  plan_days <- as.numeric(study$planned_enrollment_end_date - study$study_start_date)
-  target <- current_target(tbls)
+  # Plan: each site enrolls its target at a steady rate from its activation date
+  # to the planned end of enrollment.
+  share <- current_target(tbls) / sum(tbls$sites$target_enrollment)
+  planned <- vapply(dates, function(d) {
+    frac <- as.numeric(d - tbls$sites$activation_date) /
+      as.numeric(study$planned_enrollment_end_date - tbls$sites$activation_date)
+    sum(tbls$sites$target_enrollment * pmin(pmax(frac, 0), 1)) * share
+  }, numeric(1))
   tibble::tibble(
     date = dates,
     Screened = findInterval(as.numeric(dates), as.numeric(scr)),
     Randomized = findInterval(as.numeric(dates), as.numeric(rnd)),
-    Planned = pmin(target, target * as.numeric(dates - study$study_start_date) / plan_days)
+    Planned = planned
   )
 }
 

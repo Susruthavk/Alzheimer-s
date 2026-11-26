@@ -15,8 +15,8 @@ data queries, an R Shiny monitoring dashboard, and reproducible R Markdown repor
 | 1 | PostgreSQL schema + Python (Pandas) simulator and loader | `sql/`, `python/`, `data/` | done |
 | 2 | Edit checks in R → query listings by site | `R/edit_checks/`, `output/` | done |
 | 3 | R Shiny dashboard: enrollment vs target, visit window compliance, missing eCRFs, open queries; filter by site and arm | `shiny/`, `R/metrics.R` | done |
-| 4 | Parameterized R Markdown progress reports (one per site, or study-wide) | `reports/` | next |
-| 5 | testthat validation + report specs and docs | `tests/testthat/`, `docs/` | |
+| 4 | Parameterized R Markdown progress reports (one per site, or study-wide) | `reports/` | done |
+| 5 | testthat validation + report specs and docs | `tests/testthat/`, `docs/` | next |
 
 ## The simulated study
 
@@ -121,7 +121,18 @@ If PostgreSQL is not running, the app reads `data/simulated/*.csv` instead and s
 so it also works on a free hosting service such as shinyapps.io with no database.
 Edit-check queries only appear on the Queries tab after you run the checks with `--raise-queries`.
 
-### 7. Look at the data from RStudio
+### 7. Render the progress reports
+
+```r
+install.packages(c("rmarkdown", "knitr", "rprojroot"))
+source("reports/render_reports.R")        # study-wide report + one per site
+```
+
+Or render one report from the Terminal: `Rscript reports/render_reports.R 203`.
+In RStudio you can also open `reports/progress_report.Rmd` and use *Knit → Knit with Parameters…* to pick a site and arm.
+Reports land in `reports/output/` (git-ignored). Sections and definitions: [docs/report_specification.md](docs/report_specification.md).
+
+### 8. Look at the data from RStudio
 
 ```r
 install.packages(c("DBI", "RPostgres", "dplyr", "dbplyr"))
@@ -150,7 +161,8 @@ R/edit_checks/run_edit_checks.R   runs them, writes listings, raises queries
 R/edit_checks/ground_truth.R      compares findings with planted issues (validation)
 output/query_listings/     site-by-site query listings (sample output committed)
 shiny/app.R                the monitoring dashboard
-reports/                   step 4
+reports/progress_report.Rmd     parameterized progress report (site, arm)
+reports/render_reports.R        renders the study-wide and per-site reports
 tests/testthat/            step 5
 docs/                      specifications
 ```
