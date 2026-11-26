@@ -49,7 +49,7 @@ jobs:
       - name: Install R packages
         run: |
           sudo apt-get install -y libpq-dev
-          Rscript -e 'install.packages(c("DBI", "RPostgres", "dplyr", "tidyr", "tibble", "shiny", "bslib", "ggplot2", "DT", "rmarkdown", "knitr", "rprojroot", "testthat"))'
+          Rscript -e 'install.packages(c("DBI", "RPostgres", "dplyr", "tidyr", "tibble", "shiny", "bslib", "ggplot2", "DT", "rmarkdown", "knitr", "rprojroot", "testthat", "xml2"))'
 
       - name: Run edit checks and raise queries
         run: Rscript R/edit_checks/run_edit_checks.R --raise-queries

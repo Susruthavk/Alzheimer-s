@@ -135,7 +135,7 @@ Reports land in `reports/output/` (git-ignored). Sections and definitions: [docs
 ### 8. Run the tests
 
 ```r
-install.packages(c("testthat", "rprojroot"))
+install.packages(c("testthat", "rprojroot", "xml2"))
 ```
 
 then in the Terminal: `Rscript tests/run_tests.R` (33 tests; no database needed).
