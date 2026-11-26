@@ -49,7 +49,7 @@ jobs:
       - name: Install R packages
         run: |
           sudo apt-get install -y libpq-dev
-          Rscript -e 'install.packages(c("DBI", "RPostgres", "dplyr", "tidyr", "tibble"))'
+          Rscript -e 'install.packages(c("DBI", "RPostgres", "dplyr", "tidyr", "tibble", "shiny", "bslib", "ggplot2", "DT", "rmarkdown", "knitr", "rprojroot"))'
 
       - name: Run edit checks and raise queries
         run: Rscript R/edit_checks/run_edit_checks.R --raise-queries
@@ -64,7 +64,26 @@ jobs:
             cat(sum(m$detected), "of", nrow(m), "planted issues detected\n")
             if (!all(m$detected)) { print(m[!m$detected, ]); quit(status = 1) }'
 
+      - name: Dashboard starts and computes its metrics
+        run: |
+          Rscript -e '
+            env <- new.env()
+            sys.source("shiny/app.R", envir = env, chdir = TRUE)
+            stopifnot(inherits(env$ui, "shiny.tag.list") || inherits(env$ui, "shiny.tag"))
+            str(headline_metrics(env$TBLS))
+            stopifnot(env$DATA$source == "PostgreSQL")'
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Render progress reports (study-wide and site 203)
+        run: Rscript reports/render_reports.R ALL 203
+
       - uses: actions/upload-artifact@v4
         with:
           name: query-listings
           path: output/query_listings
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: progress-reports
+          path: reports/output

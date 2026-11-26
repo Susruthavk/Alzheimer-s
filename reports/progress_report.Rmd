@@ -1,0 +1,180 @@
+---
+title: "ALZ-301 Monitoring Progress Report"
+subtitle: "`r if (params$site == 'ALL') 'All sites' else paste('Site', params$site)`"
+date: "Data cutoff: `r format(cutoff, '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    df_print: kable
+params:
+  site: "ALL"        # a site ID such as "203", or "ALL"
+  arm: "ALL"         # PBO, LOW, HIGH or ALL
+  grace_days: 14     # days allowed for eCRF entry before a form counts as missing
+---
+
+```{r setup, include = FALSE}
+# Report specification: docs/report_specification.md (section numbers below match it).
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 9, fig.height = 4.5)
+knitr::opts_knit$set(root.dir = rprojroot::find_root("alz-trial-monitoring.Rproj"))
+```
+
+```{r load, include = FALSE}
+source("R/db.R")
+source("R/edit_checks/checks.R")
+source("R/metrics.R")
+library(ggplot2)
+
+data <- load_trial_data()
+all_tbls <- data$tables
+cutoff <- all_tbls$study$data_cutoff_date[1]
+sites <- if (params$site == "ALL") NULL else params$site
+arms <- if (params$arm == "ALL") NULL else params$arm
+if (length(sites) && !all(sites %in% all_tbls$sites$site_id)) stop("Unknown site: ", params$site)
+tb <- filter_trial(all_tbls, sites, arms)
+
+hm <- headline_metrics(tb, params$grace_days)
+enr <- enrollment_by_site(tb)
+vo <- visit_outcomes(tb)
+ec <- ecrf_status(tb, params$grace_days)
+qs <- query_status_summary(tb)
+findings <- run_all_checks(tb, cutoff, params$grace_days)
+
+theme_report <- theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+        legend.position = "top", legend.title = element_blank())
+outcome_colors <- c("In window" = "#0aac23", "Out of window" = "#f18a59",
+                    "Missed" = "#dc3c3d", "Overdue, not recorded" = "#fbb315")
+age_colors <- setNames(c("#84b9f3", "#338ced", "#1b64be", "#0e3d7e"), AGE_BUCKETS)
+kbl <- function(df, ...) knitr::kable(df, format.args = list(big.mark = ","), ...)
+```
+
+**Scope:** `r if (is.null(sites)) "all sites" else paste0("site ", sites, " (", tb$sites$site_name, ", ", tb$sites$city, ")")`,
+`r if (is.null(arms)) "all arms" else paste("arm", arms)`. **Data source:** `r data$source`.
+Simulated data. ALZ-301 is a fictional study.
+
+# 1. Summary
+
+```{r summary}
+tibble::tribble(
+  ~Metric, ~Value,
+  "Subjects screened", format(hm$screened),
+  "Subjects randomized / target", sprintf("%d / %s (%.1f%%)", hm$randomized, format(round(hm$target, 1)), hm$pct_of_target),
+  "Completed visits in window", sprintf("%.1f%%", hm$pct_in_window),
+  "Missed visits", format(hm$missed_visits),
+  sprintf("Missing eCRFs (over %d days)", params$grace_days), format(hm$missing_ecrfs),
+  "Open queries", format(hm$open_queries),
+  "Answered queries awaiting review", format(hm$answered_queries),
+  "Edit check findings", format(nrow(findings))
+) |> kbl()
+```
+
+# 2. Screening and enrollment
+
+```{r enrollment-curve}
+enrollment_curve(tb) |>
+  tidyr::pivot_longer(-date, names_to = "series", values_to = "n") |>
+  ggplot(aes(date, n, color = series, linetype = series)) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = c(Randomized = "#257de0", Screened = "#f47230", Planned = "#8a8a8a")) +
+  scale_linetype_manual(values = c(Randomized = "solid", Screened = "solid", Planned = "22")) +
+  labs(x = NULL, y = "Subjects (cumulative)") + theme_report
+```
+
+```{r enrollment-table}
+enr |>
+  transmute(Site = site_id, Country = country, Target = round(target, 1), Screened = screened,
+            `Screen failed` = screen_failed, Randomized = randomized, `% of target` = pct_of_target,
+            Discontinued = discontinued, Completed = completed) |>
+  kbl()
+```
+
+# 3. Visit window compliance
+
+```{r visits-plot, fig.height = 3.8}
+visit_compliance_summary(vo, "visit_code") |>
+  left_join(select(tb$visit_schedule, visit_code, visit_order), by = "visit_code") |>
+  mutate(visit_code = reorder(visit_code, visit_order)) |>
+  ggplot(aes(visit_code, n, fill = outcome)) +
+  geom_col(width = 0.65, color = "white") +
+  scale_fill_manual(values = outcome_colors, drop = FALSE) +
+  labs(x = NULL, y = "Visits due") + theme_report
+```
+
+```{r visits-table}
+visit_compliance_summary(vo, "visit_code") |>
+  left_join(select(tb$visit_schedule, visit_code, visit_order), by = "visit_code") |>
+  arrange(visit_order) |>
+  tidyr::pivot_wider(id_cols = visit_code, names_from = outcome, values_from = n) |>
+  rename(Visit = visit_code) |>
+  kbl()
+```
+
+# 4. Missing eCRFs
+
+```{r missing}
+miss <- ec |> filter(status == "Missing")
+if (nrow(miss)) {
+  miss |>
+    transmute(Site = site_id, Subject = subject_id, Visit = visit_code, Form = form_code,
+              `Visit date` = visit_date, `Days since visit` = days_since_visit) |>
+    arrange(Site, Subject) |>
+    kbl()
+} else {
+  cat("No missing eCRFs.")
+}
+```
+
+# 5. Queries
+
+```{r queries-plot, fig.height = 3.5}
+q_open <- qs |> filter(query_status == "Open")
+if (nrow(q_open)) {
+  q_open |> count(site_id, age_bucket, .drop = FALSE) |>
+    ggplot(aes(site_id, n, fill = age_bucket)) +
+    geom_col(width = 0.65, color = "white") +
+    scale_fill_manual(values = age_colors, drop = FALSE) +
+    labs(x = "Site", y = "Open queries") + theme_report
+}
+```
+
+```{r queries-table}
+qs |> count(Source = query_source, Status = query_status, name = "Queries") |> kbl()
+```
+
+# 6. Edit check findings
+
+Checks are defined in `docs/edit_check_specification.md`.
+
+```{r findings-summary}
+if (nrow(findings)) {
+  findings |> count(Check = check_id, Finding = check_name, name = "Findings") |> kbl()
+}
+```
+
+```{r findings-listing}
+if (nrow(findings)) {
+  findings |>
+    transmute(Site = site_id, Subject = subject_id, Visit = visit_code, Form = form_code,
+              Check = check_id, `Query text` = query_text) |>
+    kbl()
+} else {
+  cat("No findings.")
+}
+```
+
+# 7. Traceability
+
+```{r trace}
+git_commit <- tryCatch(system("git rev-parse --short HEAD", intern = TRUE), error = function(e) NA,
+                       warning = function(w) NA)
+tibble::tribble(
+  ~Item, ~Value,
+  "Report parameters", sprintf("site = %s, arm = %s, grace_days = %s", params$site, params$arm, params$grace_days),
+  "Data source", data$source,
+  "Data cutoff", format(cutoff),
+  "Git commit", if (length(git_commit) && !is.na(git_commit[1])) git_commit[1] else "not a git checkout",
+  "Rendered", format(Sys.time(), "%Y-%m-%d %H:%M %Z"),
+  "R version", R.version.string
+) |> kbl()
+```
