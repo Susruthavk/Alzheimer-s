@@ -16,7 +16,7 @@ data queries, an R Shiny monitoring dashboard, and reproducible R Markdown repor
 | 2 | Edit checks in R → query listings by site | `R/edit_checks/`, `output/` | done |
 | 3 | R Shiny dashboard: enrollment vs target, visit window compliance, missing eCRFs, open queries; filter by site and arm | `shiny/`, `R/metrics.R` | done |
 | 4 | Parameterized R Markdown progress reports (one per site, or study-wide) | `reports/` | done |
-| 5 | testthat validation + report specs and docs | `tests/testthat/`, `docs/` | next |
+| 5 | testthat validation + report specs and docs, GitHub Actions CI | `tests/`, `docs/`, `.github/` | done |
 
 ## The simulated study
 
@@ -132,7 +132,23 @@ Or render one report from the Terminal: `Rscript reports/render_reports.R 203`.
 In RStudio you can also open `reports/progress_report.Rmd` and use *Knit → Knit with Parameters…* to pick a site and arm.
 Reports land in `reports/output/` (git-ignored). Sections and definitions: [docs/report_specification.md](docs/report_specification.md).
 
-### 8. Look at the data from RStudio
+### 8. Run the tests
+
+```r
+install.packages(c("testthat", "rprojroot", "xml2"))
+```
+
+then in the Terminal: `Rscript tests/run_tests.R` (33 tests; no database needed).
+What each test proves is mapped in [docs/validation.md](docs/validation.md).
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It regenerates the data and checks it
+matches the committed CSVs, then loads PostgreSQL 16, runs the edit checks, and confirms every planted issue is found.
+After that it checks the dashboard starts, renders the reports, and runs the testthat suite. Query listings, reports
+and test results are attached to each run under *Actions → run → Artifacts*.
+
+### 9. Look at the data from RStudio
 
 ```r
 install.packages(c("DBI", "RPostgres", "dplyr", "dbplyr"))
@@ -163,6 +179,7 @@ output/query_listings/     site-by-site query listings (sample output committed)
 shiny/app.R                the monitoring dashboard
 reports/progress_report.Rmd     parameterized progress report (site, arm)
 reports/render_reports.R        renders the study-wide and per-site reports
-tests/testthat/            step 5
-docs/                      specifications
+tests/testthat/            unit, validation and regression tests (tests/run_tests.R runs them)
+.github/workflows/ci.yml   CI pipeline
+docs/                      data, edit check and report specifications; validation matrix
 ```
