@@ -1,0 +1,8 @@
+form_code,form_name,form_category
+DM,Demographics,Administrative
+ELIG,Inclusion/Exclusion Criteria,Administrative
+VS,Vital Signs,Safety
+AE,Adverse Event Review,Safety
+MMSE,Mini-Mental State Examination,Efficacy
+CDRSB,Clinical Dementia Rating - Sum of Boxes,Efficacy
+ADAS,ADAS-Cog 13,Efficacy

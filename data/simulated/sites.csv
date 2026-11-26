@@ -1,0 +1,9 @@
+site_id,site_name,country,city,principal_investigator,activation_date,target_enrollment
+101,Northbridge Memory Clinic,USA,Boston,Dr. Anita Rao,2025-02-03,40
+102,Lakeshore Neurology Research,USA,Chicago,Dr. Marcus Hale,2025-02-17,35
+103,Pacific Cognitive Health Center,USA,San Diego,Dr. Elena Ortiz,2025-03-05,35
+104,Maple Leaf Brain Institute,Canada,Toronto,Dr. Owen Fraser,2025-03-20,30
+201,Rhine Valley Memory Unit,Germany,Cologne,Dr. Katrin Vogel,2025-04-04,30
+202,Clinique des Neurosciences,France,Lyon,Dr. Julien Morel,2025-04-19,25
+203,Iberia Neuro Trials,Spain,Madrid,Dr. Lucia Navarro,2025-05-04,25
+301,Southern Cross Dementia Research,Australia,Melbourne,Dr. Priya Shah,2025-06-03,20

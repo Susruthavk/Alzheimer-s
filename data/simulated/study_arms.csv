@@ -1,0 +1,4 @@
+arm_code,arm_name,arm_order
+PBO,Placebo,1
+LOW,ALZ-301 Low Dose,2
+HIGH,ALZ-301 High Dose,3
