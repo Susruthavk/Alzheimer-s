@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pipeline:
+    name: Simulate, load, run edit checks
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: alz_trial
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/alz_trial
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Simulate data and check it matches the committed CSVs
+        run: |
+          python python/simulate_data.py
+          git diff --stat --exit-code data/simulated
+
+      - name: Load PostgreSQL
+        run: python python/load_data.py --reset
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install R packages
+        run: |
+          sudo apt-get install -y libpq-dev
+          Rscript -e 'install.packages(c("DBI", "RPostgres", "dplyr", "tidyr", "tibble"))'
+
+      - name: Run edit checks and raise queries
+        run: Rscript R/edit_checks/run_edit_checks.R --raise-queries
+
+      - name: Every planted issue is detected
+        run: |
+          Rscript -e '
+            source("R/db.R"); source("R/edit_checks/checks.R"); source("R/edit_checks/ground_truth.R")
+            con <- db_connect()
+            m <- match_planted_issues(run_all_checks(load_trial_tables(con)),
+                                      DBI::dbGetQuery(con, "select * from sim.injected_issues"))
+            cat(sum(m$detected), "of", nrow(m), "planted issues detected\n")
+            if (!all(m$detected)) { print(m[!m$detected, ]); quit(status = 1) }'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: query-listings
+          path: output/query_listings

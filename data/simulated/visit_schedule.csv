@@ -1,0 +1,8 @@
+visit_code,visit_name,visit_order,target_day,window_start_day,window_end_day
+SCR,Screening,1,-14,-28,-1
+BL,Baseline (Day 1),2,1,1,1
+W4,Week 4,3,29,26,32
+W12,Week 12,4,85,78,92
+W24,Week 24,5,169,162,176
+W36,Week 36,6,253,239,267
+W52,Week 52 (End of Study),7,365,351,379

@@ -1,0 +1,163 @@
+site_id,subject_id,visit_id,form_code,check_id,query_source,query_text,query_status,opened_date,answered_date,closed_date
+101,101-0002,2,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2025-02-17,2025-02-19,2025-02-26
+101,101-0003,8,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-06-25,2025-07-12,2025-07-22
+101,101-0006,14,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Open,2025-04-09,,
+101,101-0007,21,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Answered,2025-06-10,2025-06-15,
+101,101-0007,24,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-09-17,2025-09-23,2025-10-03
+101,101-0007,26,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-02-17,2026-02-28,2026-03-10
+101,101-0007,27,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Open,2026-06-13,,
+101,101-0011,42,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-09-26,2025-10-16,2025-10-18
+101,101-0013,50,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2025-09-20,2025-09-27,2025-10-10
+101,101-0013,54,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-03-22,,
+101,101-0016,65,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Answered,2025-09-29,2025-10-05,
+101,101-0017,70,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-04-28,2026-05-15,2026-05-21
+101,101-0017,70,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-04-21,2026-05-05,2026-05-09
+101,101-0017,72,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-10-30,,
+101,101-0017,72,AE,,Manual,AE start date is missing. Please provide.,Answered,2026-10-01,2026-10-21,
+101,101-0019,79,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-10-30,2025-11-15,2025-11-22
+101,101-0020,80,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2025-11-21,2025-12-05,2025-12-17
+101,101-0027,106,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-08-03,2026-08-19,2026-08-27
+101,101-0028,112,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2026-09-11,2026-09-15,
+101,101-0030,122,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2026-06-27,,
+101,101-0036,135,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2026-05-10,2026-05-19,2026-05-28
+101,101-0038,144,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-09-01,2026-09-08,2026-09-15
+101,101-0040,146,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2026-07-19,2026-07-29,2026-08-04
+101,101-0041,150,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-07-14,2026-07-23,2026-07-29
+101,101-0046,167,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-07-21,2026-07-22,2026-07-23
+101,101-0046,167,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Open,2026-08-03,,
+101,101-0047,173,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-10-04,,
+101,101-0048,175,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-08-24,2026-08-28,2026-09-09
+101,101-0050,179,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-08-18,2026-08-27,2026-08-30
+101,101-0051,182,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Answered,2026-08-17,2026-08-24,
+102,102-0001,190,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-03-23,2025-04-10,2025-04-19
+102,102-0002,191,DM,,Manual,Year of birth on DM does not match source. Please verify.,Answered,2025-04-07,2025-04-24,
+102,102-0002,192,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2025-04-23,2025-05-05,2025-05-07
+102,102-0003,203,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2025-12-25,2026-01-01,
+102,102-0003,203,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-01-02,2026-01-22,2026-02-03
+102,102-0004,210,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2025-12-23,,
+102,102-0005,218,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-04-13,2026-04-15,2026-04-19
+102,102-0006,223,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2025-11-21,2025-12-09,2025-12-13
+102,102-0006,224,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-01-29,2026-02-01,2026-02-09
+102,102-0006,225,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-05-22,2026-05-30,2026-06-06
+102,102-0007,229,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-08-29,2025-09-04,2025-09-06
+102,102-0007,230,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2025-10-24,,
+102,102-0009,233,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2025-06-24,,
+102,102-0009,236,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-12-03,2025-12-16,2025-12-27
+102,102-0009,238,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-05-29,2026-06-02,2026-06-13
+102,102-0010,240,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2025-07-03,2025-07-23,2025-07-27
+102,102-0010,241,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-08-04,2025-08-11,2025-08-16
+102,102-0010,243,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-11-25,2025-11-30,2025-12-13
+102,102-0010,243,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-11-06,2025-11-09,2025-11-10
+102,102-0010,244,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-01-31,2026-02-13,2026-02-23
+102,102-0012,253,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-05-13,2026-05-20,2026-05-30
+102,102-0013,255,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2025-07-09,2025-07-15,2025-07-24
+102,102-0013,259,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-01-15,2026-01-19,2026-01-28
+102,102-0016,273,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-03-31,2026-04-03,2026-04-04
+102,102-0020,281,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2025-09-08,2025-09-23,
+102,102-0020,282,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-09-11,2025-09-16,2025-09-17
+102,102-0026,313,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-01-17,2026-01-30,2026-02-02
+102,102-0026,316,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-06-21,2026-07-06,2026-07-09
+102,102-0031,332,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-04-08,2026-04-20,2026-04-23
+102,102-0034,344,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-03-10,2026-03-23,2026-04-01
+102,102-0034,346,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-05-04,2026-05-24,2026-05-27
+102,102-0039,364,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-06-09,2026-06-13,2026-06-17
+102,102-0039,367,AE,,Manual,AE start date is missing. Please provide.,Open,2026-08-26,,
+102,102-0045,375,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Open,2026-10-05,,
+103,103-0002,396,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2025-05-03,,
+103,103-0003,403,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2025-05-30,,
+103,103-0005,413,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-09-14,2025-10-01,2025-10-03
+103,103-0005,415,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-02-14,2026-02-28,2026-03-06
+103,103-0009,422,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-11-01,2025-11-07,2025-11-17
+103,103-0009,423,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-11-25,2025-12-09,2025-12-11
+103,103-0012,429,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-10-01,2025-10-18,2025-10-26
+103,103-0014,437,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-11-02,2025-11-09,2025-11-15
+103,103-0016,442,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-04-26,2026-05-09,2026-05-17
+103,103-0020,456,AE,,Manual,AE start date is missing. Please provide.,Answered,2026-03-17,2026-03-31,
+103,103-0021,460,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-02-24,2026-03-03,2026-03-08
+103,103-0021,464,AE,,Manual,AE start date is missing. Please provide.,Open,2026-10-27,,
+103,103-0025,483,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2026-01-02,2026-01-14,2026-01-20
+103,103-0025,484,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-02-12,2026-02-15,2026-02-23
+103,103-0028,495,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-07-31,2026-08-09,2026-08-15
+103,103-0029,500,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2026-05-21,2026-05-28,
+103,103-0030,504,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-04-23,2026-05-06,2026-05-19
+103,103-0030,504,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-04-07,2026-04-20,2026-04-28
+103,103-0030,504,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-03-23,2026-04-12,2026-04-21
+103,103-0033,515,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-08-03,2026-08-22,2026-08-27
+103,103-0038,528,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-08-21,2026-09-06,2026-09-11
+103,103-0039,533,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Open,2026-09-28,,
+103,103-0040,537,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-10-02,2026-10-04,2026-10-07
+103,103-0040,537,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Answered,2026-10-18,2026-10-31,
+103,103-0041,539,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-09-24,2026-09-25,2026-10-06
+104,104-0003,558,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Open,2025-05-31,,
+104,104-0008,586,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-10-30,2025-11-05,2025-11-15
+104,104-0008,588,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2026-06-02,2026-06-20,
+104,104-0008,589,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Answered,2026-08-13,2026-08-24,
+104,104-0013,594,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2025-10-28,2025-11-06,2025-11-11
+104,104-0014,596,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2025-12-01,,
+104,104-0014,599,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Answered,2026-04-17,2026-04-25,
+104,104-0016,610,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Answered,2026-01-03,2026-01-21,
+104,104-0016,613,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-05-02,2026-05-18,2026-05-28
+104,104-0016,614,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-08-07,2026-08-16,2026-08-24
+104,104-0017,615,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2025-12-03,2025-12-06,2025-12-10
+104,104-0017,616,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-01-24,,
+104,104-0021,633,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-06-21,2026-06-30,2026-07-11
+104,104-0021,633,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-08-02,2026-08-09,2026-08-18
+104,104-0025,653,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-03-29,2026-04-16,2026-04-24
+201,201-0001,697,AE,,Manual,AE start date is missing. Please provide.,Closed,2025-12-20,2026-01-03,2026-01-09
+201,201-0001,698,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-03-11,2026-03-24,2026-03-31
+201,201-0001,699,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2026-06-01,,
+201,201-0002,700,DM,,Manual,Year of birth on DM does not match source. Please verify.,Answered,2025-06-03,2025-06-21,
+201,201-0002,705,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-03-08,2026-03-14,2026-03-27
+201,201-0005,710,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2025-08-05,2025-08-24,2025-09-05
+201,201-0008,736,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-09-11,2026-09-22,2026-09-25
+201,201-0009,737,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2025-10-31,,
+201,201-0009,741,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-03-07,2026-03-16,2026-03-27
+201,201-0012,746,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2025-10-30,2025-11-06,2025-11-16
+201,201-0017,761,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-04-09,2026-04-18,2026-04-20
+201,201-0017,762,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-03-04,2026-03-05,2026-03-14
+201,201-0017,762,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-04-05,2026-04-24,2026-04-27
+201,201-0017,763,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-04-01,2026-04-21,2026-04-28
+201,201-0018,766,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-03-01,2026-03-20,2026-03-27
+201,201-0019,767,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-03-20,,
+201,201-0024,785,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-07-10,2026-07-13,2026-07-22
+201,201-0026,790,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-09-26,2026-09-29,2026-10-09
+202,202-0001,812,AE,,Manual,AE start date is missing. Please provide.,Open,2026-03-05,,
+202,202-0005,823,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-06-26,2025-07-16,2025-07-23
+202,202-0005,825,AE,,Manual,AE start date is missing. Please provide.,Answered,2025-09-22,2025-09-24,
+202,202-0009,849,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2026-06-03,,
+202,202-0010,856,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-06-24,2026-07-02,2026-07-08
+202,202-0011,859,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-10-19,2025-10-27,2025-11-09
+202,202-0011,862,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-05-05,2026-05-17,2026-05-26
+202,202-0014,878,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-12-26,2026-01-13,2026-01-16
+202,202-0014,881,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-04-10,2026-04-11,2026-04-24
+202,202-0014,882,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-05-24,2026-05-30,2026-06-08
+202,202-0017,897,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-02-25,2026-03-15,2026-03-25
+202,202-0017,898,AE,,Manual,AE start date is missing. Please provide.,Open,2026-03-30,,
+202,202-0018,902,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Open,2026-02-14,,
+202,202-0022,917,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-06-19,2026-07-06,2026-07-07
+202,202-0028,935,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Open,2026-08-27,,
+203,203-0004,963,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-09-23,2025-10-11,2025-10-19
+203,203-0005,968,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2025-09-23,2025-10-09,2025-10-18
+203,203-0006,973,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-04-23,2026-05-03,2026-05-15
+203,203-0007,977,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2025-10-30,2025-11-11,2025-11-16
+203,203-0007,979,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Open,2026-02-20,,
+203,203-0007,982,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Open,2026-10-27,,
+203,203-0012,1008,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-02-14,2026-02-17,2026-02-26
+203,203-0013,1012,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2026-02-05,2026-02-22,2026-02-24
+203,203-0015,1019,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2026-04-03,2026-04-14,2026-04-27
+203,203-0015,1019,ELIG,,Manual,Inclusion criterion 4 marked 'Yes' but no supporting source note. Please confirm.,Closed,2026-04-16,2026-04-21,2026-05-03
+203,203-0015,1019,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-04-28,2026-05-16,2026-05-19
+203,203-0020,1042,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2026-10-18,2026-10-27,
+203,203-0023,1045,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Answered,2026-09-15,2026-09-30,
+203,203-0024,1046,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-10-08,2026-10-12,2026-10-25
+301,301-0004,1065,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Open,2025-08-28,,
+301,301-0005,1069,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-01-10,2026-01-20,2026-01-21
+301,301-0006,1073,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2025-09-14,2025-10-04,2025-10-11
+301,301-0009,1085,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2025-11-21,2025-12-09,2025-12-22
+301,301-0011,1094,AE,,Manual,AE start date is missing. Please provide.,Answered,2026-03-03,2026-03-11,
+301,301-0014,1108,MMSE,,Manual,MMSE item scores do not sum to recorded total. Please review.,Closed,2026-02-11,2026-02-13,2026-02-15
+301,301-0016,1121,ADAS,,Manual,ADAS-Cog word recall trial 3 left blank. Please complete or mark not done.,Closed,2026-07-14,2026-07-18,2026-07-21
+301,301-0017,1127,AE,,Manual,AE start date is missing. Please provide.,Closed,2026-09-14,2026-10-04,2026-10-16
+301,301-0024,1145,DM,,Manual,Year of birth on DM does not match source. Please verify.,Closed,2026-09-20,2026-10-08,2026-10-21
+301,301-0025,1146,CDRSB,,Manual,CDR box score missing for 'Community affairs'. Please complete.,Closed,2026-09-10,2026-09-17,2026-09-25
+301,301-0026,1149,VS,,Manual,Systolic BP recorded as 210 mmHg. Please confirm or correct.,Closed,2026-09-16,2026-09-22,2026-10-05
