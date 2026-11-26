@@ -6,14 +6,16 @@ data queries, an R Shiny monitoring dashboard, and reproducible R Markdown repor
 
 **All data is simulated.** ALZ-301, its sites, investigators and subjects are fictional.
 
+![Dashboard overview](docs/img/dashboard_overview.png)
+
 ## Build plan
 
 | Step | What | Folder | Status |
 |---|---|---|---|
 | 1 | PostgreSQL schema + Python (Pandas) simulator and loader | `sql/`, `python/`, `data/` | done |
 | 2 | Edit checks in R → query listings by site | `R/edit_checks/`, `output/` | done |
-| 3 | R Shiny dashboard: enrollment vs target, visit window compliance, missing eCRFs, open queries; filter by site and arm | `shiny/` | next |
-| 4 | Parameterized R Markdown progress reports (one per site, or study-wide) | `reports/` | |
+| 3 | R Shiny dashboard: enrollment vs target, visit window compliance, missing eCRFs, open queries; filter by site and arm | `shiny/`, `R/metrics.R` | done |
+| 4 | Parameterized R Markdown progress reports (one per site, or study-wide) | `reports/` | next |
 | 5 | testthat validation + report specs and docs | `tests/testthat/`, `docs/` | |
 
 ## The simulated study
@@ -103,7 +105,23 @@ To also raise the findings as open queries in the database, run in the Terminal:
 The checks are described in [docs/edit_check_specification.md](docs/edit_check_specification.md).
 With the default data they find all 157 planted problems (175 findings in total).
 
-### 6. Look at the data from RStudio
+### 6. Open the dashboard
+
+```r
+install.packages(c("shiny", "bslib", "ggplot2", "DT"))
+shiny::runApp("shiny")
+```
+
+Tabs: **Overview** (screened and randomized against the enrollment plan and site targets),
+**Visit windows** (in window, out of window, missed, by visit and site), **Missing eCRFs**,
+**Queries** (open queries by site and age) and **Edit check findings** (checks run live).
+The sidebar filters every tab by site and study arm; tables export to CSV or Excel.
+
+If PostgreSQL is not running, the app reads `data/simulated/*.csv` instead and says so in the sidebar,
+so it also works on a free hosting service such as shinyapps.io with no database.
+Edit-check queries only appear on the Queries tab after you run the checks with `--raise-queries`.
+
+### 7. Look at the data from RStudio
 
 ```r
 install.packages(c("DBI", "RPostgres", "dplyr", "dbplyr"))
@@ -125,12 +143,13 @@ sql/01_schema.sql          PostgreSQL DDL (trial + sim schemas)
 python/simulate_data.py    simulated trial data with planted issues -> data/simulated/*.csv
 python/load_data.py        loads CSVs into PostgreSQL with pandas
 data/simulated/            generated CSVs (committed so the project works without Python)
-R/db.R                     database connection helpers (reads DATABASE_URL / .env)
+R/db.R                     database connection helpers (reads DATABASE_URL / .env; CSV fallback)
+R/metrics.R                enrollment, visit window, eCRF and query metrics (dashboard + reports)
 R/edit_checks/checks.R     the edit check functions
 R/edit_checks/run_edit_checks.R   runs them, writes listings, raises queries
 R/edit_checks/ground_truth.R      compares findings with planted issues (validation)
 output/query_listings/     site-by-site query listings (sample output committed)
-shiny/                     step 3
+shiny/app.R                the monitoring dashboard
 reports/                   step 4
 tests/testthat/            step 5
 docs/                      specifications
