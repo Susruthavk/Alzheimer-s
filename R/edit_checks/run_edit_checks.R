@@ -27,8 +27,10 @@ raise_queries <- function(con, listing, opened_date) {
               query_source = "Edit check", query_text, query_status = "Open",
               opened_date = as.Date(opened_date))
   if (nrow(new)) {
-    DBI::dbWriteTable(con, c("trial", "queries"), as.data.frame(new), append = TRUE,
-                      row.names = FALSE)
+    # RPostgres takes a DBI::Id for schema-qualified tables; RPostgreSQL takes c(schema, table)
+    target <- if (inherits(con, "PqConnection")) DBI::Id(schema = "trial", table = "queries") else
+      c("trial", "queries")
+    DBI::dbWriteTable(con, target, as.data.frame(new), append = TRUE, row.names = FALSE)
   }
   nrow(new)
 }
